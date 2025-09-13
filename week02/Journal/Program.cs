@@ -10,6 +10,10 @@ class Program
         // Exceeding Requirements
         // added functionality to add the .csv to the end of the filename to ensure that all files when saved or loaded are .csv
         // added ability to save and load from a .csv file 
+        // added ability for user to use one of the following statements to enter command
+        //      - number ex: 1
+        //      - command name ex: create
+        //      - full line ex: 1. create
 
         Console.WriteLine("Welcome to your Journal!");
 
@@ -25,37 +29,65 @@ class Program
             Console.WriteLine("4. Load");
             Console.WriteLine("5. Quit");
             Console.Write("What would you like to do? ");
-            string userInput = Console.ReadLine();
-            int choice = int.Parse(userInput);
 
-            if (choice == 1)
+            // getting user input
+            string userInput = Console.ReadLine();
+            int choice = -1;
+            string nChoice = "";
+            bool isString = false;
+
+            try
+            {
+                choice = int.Parse(userInput);
+            }
+            catch (Exception)
+            {
+                nChoice = userInput.Trim();
+                isString = true;
+            }
+            finally
+            {
+                nChoice.ToLower();
+            }
+
+
+            if (choice == 1 || nChoice == "create" || nChoice == "1. create")
             {
                 // create
                 createNewEntry();
             }
-            else if (choice == 2)
+            else if (choice == 2 || nChoice == "display all" || nChoice == "2. display all")
             {
                 // display all
                 userJourn.DisplayAll();
             }
-            else if (choice == 3)
+            else if (choice == 3 || nChoice == "save" || nChoice == "3. save")
             {
                 // save
                 userJourn.SaveToFile();
             }
-            else if (choice == 4)
+            else if (choice == 4 || nChoice == "load" || nChoice == "4. load")
             {
                 // Load
                 userJourn.LoadFromFile();
             }
-            else if (choice == 5)
+            else if (choice == 5 || nChoice == "quit" || nChoice == "5. quit")
             {
                 // quit
                 break;
             }
             else
             {
-                Console.WriteLine($"{choice} is not an option, please try again...");
+                if (isString)
+                {
+                    Console.WriteLine($"{nChoice} is not an option, please try again...");
+  
+                }
+                else
+                {
+                    Console.WriteLine($"{choice} is not an option, please try again...");
+                }
+                
                 // spacing line
                 Console.WriteLine("");
             }

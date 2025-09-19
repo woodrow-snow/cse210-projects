@@ -9,7 +9,6 @@ class Program
         // program additions
         //      -made it so that when hiding words, x amount of new words are hidden and there are no repeats.
         //      -added private function to scripture class to get the total count of hidden words in the scripture
-        // 
 
         // creating scripture object
         string words = "For it is expedient that I, the Lord, should make every man accountable, as a steward over earthly blessings, which I have made and prepared for my creatures.";
@@ -44,13 +43,16 @@ class Program
                 verseToMemorize.HideRandomWords(3);
             }
 
+            // displaying results again after hiding words
+            Console.Clear();
+            Console.WriteLine(verseToMemorize.GetDisplayText());
+           
+
             // checking to see if scripture is fully hidden
             if (verseToMemorize.IsCompletelyHidden())
             {
                 break;
             }
-
-            Console.ReadLine();
         }
     }
 }

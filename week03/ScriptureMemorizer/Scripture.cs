@@ -37,7 +37,6 @@ class Scripture
         // if there are more unhidden words than numbers to hide at a time
         if ((_words.Count() - hiddenCount) >= numberToHide)
         {
-            Console.WriteLine("In if statement");
             for (int i = 0; i < numberToHide; i++)
             {
                 // choosing the next number
@@ -46,10 +45,8 @@ class Scripture
                 // while the choosen word is hidden (basically, making sure that the number chosen is not a word that is already hidden)
                 while (_words[newHidden].IsHidden() == true)
                 {
-                    Console.WriteLine("searching for new word");
                     newHidden = rand.Next(_words.Count());
                 }
-                Console.WriteLine("Found word!");
 
                 // hidding word
                 _words[newHidden].Hide();
@@ -64,8 +61,6 @@ class Scripture
             // subtract amound hidden from the numberToHide var
             int unhiddenWordCount = _words.Count() - hiddenAmount;
 
-            Console.WriteLine($"In else statement, amount left: {unhiddenWordCount}");
-
             // hide results amount of words
             for (int i = 0; i < unhiddenWordCount; i++)
             {
@@ -74,10 +69,8 @@ class Scripture
                 // while the choosen word is hidden (basically, making sure that the number chosen is not a word that is already hidden)
                 while (_words[newHidden].IsHidden() == true)
                 {
-                    Console.WriteLine("finding word to hide");
                     newHidden = rand.Next(_words.Count());
                 }
-                Console.WriteLine("Found word!");
 
                 // hidding word
                 _words[newHidden].Hide();

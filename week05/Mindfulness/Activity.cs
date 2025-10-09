@@ -6,7 +6,6 @@ class Activity
     private string _description;
     private int _timeInSeconds;
     private DateTime _timeDifference;
-
     protected delegate void ActivityRoutine();
 
     protected Activity(string type, string description)
